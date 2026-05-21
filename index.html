@@ -60,7 +60,7 @@
     <!-- Styles -->
     <style>
       :root {
-        --bg-primary: #4CCF17;
+        --bg-primary: #000000;
         --bg-secondary: #2E220E;
         --text-primary: #f5f7ff;
         --text-secondary: #b8bfd4;
@@ -221,8 +221,8 @@
       }
 
       .Send-Prompt {
-        corner-shape: squircle
-        --bg-primary: #000000;
+        corner-shape: squircle;
+        font-family: 'IBM-Plex-Serif', serif;
       }
     </style>
   </head>
@@ -239,7 +239,7 @@
 
       <!-- Prompt area -->
       <div>
-        <textarea class="comorant-garamond">
+        <textarea class="comorant-garamond" style="corner-shape:squircle">
           This is the prompt box!
         </textarea>
         <button class="Send-Prompt">
