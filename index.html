@@ -224,6 +224,14 @@
         corner-shape: squircle;
         font-family: 'IBM-Plex-Serif', serif;
       }
+   
+     .Send-Prompt:focus {
+       border-color: 
+         var(--accent);
+       box-shadow: 
+         0 0 0 1px var(--accent),
+         0 0 20px var(--accent-glow);
+     }
 
   .textarea {
     width: 100%;
@@ -272,7 +280,7 @@
 
       <!-- Prompt area -->
       <div>
-        <textarea class="comorant-garamond textarea" style="corner-shape:squircle">
+        <textarea class="comorant-garamond textarea">
           This is the prompt box!
         </textarea>
         <button class="Send-Prompt">
