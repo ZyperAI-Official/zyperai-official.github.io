@@ -224,6 +224,39 @@
         corner-shape: squircle;
         font-family: 'IBM-Plex-Serif', serif;
       }
+
+  .textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    corner-shape: squircle;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 15px;
+    line-height: 1.6;
+  
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .textarea::placeholder {
+    color: rgba(184, 191, 212, 0.4);
+  }
+
+  /* Focused State */
+  .textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 
+      0 0 0 1px var(--accent),
+      0 0 20px var(--accent-glow);
+  }
     </style>
   </head>
 
@@ -239,7 +272,7 @@
 
       <!-- Prompt area -->
       <div>
-        <textarea class="comorant-garamond" style="corner-shape:squircle">
+        <textarea class="comorant-garamond textarea" style="corner-shape:squircle">
           This is the prompt box!
         </textarea>
         <button class="Send-Prompt">
