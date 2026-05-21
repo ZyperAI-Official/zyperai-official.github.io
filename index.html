@@ -3,30 +3,228 @@
 
   <!-- Head -->
   <head>
+    <!-- Primary Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- SEO -->
     <title>Z-AI</title>
+    <meta name="title" content="Z-AI">
+    <meta name="description" content="Z-AI — futuristic AI interface, development platform, and intelligent workspace.">
+    <meta name="keywords" content="AI, artificial intelligence, workspace, futuristic UI, Z-AI, assistant, developer tools">
+    <meta name="author" content="ZEGA">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#050816">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Z-AI">
+    <meta property="og:description" content="Futuristic AI platform and intelligent development environment.">
+    <meta property="og:image" content="/assets/banner.png">
+    <meta property="og:url" content="https://z-ai.local">
+    <meta property="og:site_name" content="Z-AI">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Z-AI">
+    <meta name="twitter:description" content="Futuristic AI platform and intelligent development environment.">
+    <meta name="twitter:image" content="/assets/banner.png">
+
+    <!-- PWA / Mobile -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Z-AI">
+    <meta name="application-name" content="Z-AI">
+    <meta name="msapplication-TileColor" content="#050816">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&amp;family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-    <!-- <link href="/api/v1">  (temporary)-->
-  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- API Placeholder -->
+    <!-- <link href="/api/v1"> (temporary) -->
+
+    <!-- Styles -->
     <style>
-      /* IBM Plex Serif Styling */
+      :root {
+        --bg-primary: #050816;
+        --bg-secondary: #0d1328;
+        --text-primary: #f5f7ff;
+        --text-secondary: #b8bfd4;
+        --accent: #6aa8ff;
+        --accent-glow: rgba(106, 168, 255, 0.45);
+
+        --font-main: "IBM Plex Serif", serif;
+        --font-display: "Playfair Display", serif;
+        --font-tech: "Tomorrow", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(106,168,255,0.08), transparent 40%),
+          radial-gradient(circle at bottom right, rgba(140,90,255,0.12), transparent 35%),
+          var(--bg-primary);
+
+        color: var(--text-primary);
+        font-family: var(--font-main);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0a1022;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #6aa8ff, #8a5cff);
+        border-radius: 999px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #8dbdff, #a37cff);
+      }
+
+      /* Typography Classes */
       .ibm-plex {
         font-family: "IBM Plex Serif", serif;
         text-decoration: none;
       }
 
-      /* Comorant Garamond Styling */
-      .comorant-garamond {
-        font-family: "Comorant-Garamond", serif;
+      .cormorant-garamond {
+        font-family: "Cormorant Garamond", serif;
         text-decoration: none;
+      }
+
+      .playfair {
+        font-family: "Playfair Display", serif;
+      }
+
+      .playfair-sc {
+        font-family: "Playfair Display SC", serif;
+      }
+
+      .spectral {
+        font-family: "Spectral", serif;
+      }
+
+      .tomorrow {
+        font-family: "Tomorrow", sans-serif;
+      }
+
+      /* Utilities */
+      .glass {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .glow {
+        box-shadow:
+          0 0 15px rgba(106,168,255,0.25),
+          0 0 40px rgba(106,168,255,0.12);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #ffffff, #9ec6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .animated-grid {
+        background-image:
+          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+        background-size: 40px 40px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 10px rgba(106,168,255,0.15);
+        }
+        50% {
+          box-shadow: 0 0 35px rgba(106,168,255,0.35);
+        }
+        100% {
+          box-shadow: 0 0 10px rgba(106,168,255,0.15);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.45s ease forwards;
+      }
+
+      .pulse-glow {
+        animation: pulseGlow 3s infinite ease-in-out;
+      }
     </style>
-  
   </head>
 
   <!-- Body -->
   <body>
-    
+
     <!-- Text -->
     <div>
       <p class="ibm-plex">
@@ -42,8 +240,9 @@
         <button class="Send-Prompt">
           Send
         </button>
+      </div>
     </div>
-    
+
   </body>
-  
+
 </html>
