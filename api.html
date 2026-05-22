@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    
+    <script>
+      // Base 32 Alphabet
+      const BASE32_ALPHABET = "0123456789ABCDEFGHJKLMNOPQRSTUVW";
+
+      // 64 Char API Key Gen
+      function generateBase32Key(prefix = "sk-or-v1-") {
+        const length = 64;
+        let key = "";
+        const randomValues = new Uint32Array(length);
+        window.crypto.getRandomValues(randomValues);
+
+        for (let i = 0; i < length; i++) {
+          const index = randomValues[i] % BASE32_ALPHABET.length;
+          key += BASE32_ALPHABET[index];
+        }
+        return `${prefix}${key}`;
+      }
+
+      // Modal
+      function toggleModal(show) {
+        const overlay = document.getElementById("apiKeyModal");
+        if (show) {
+          overlay.classList.add("active");
+        }
+        else {
+          overlay.classList.remove("active");
+          document.getElementById("modalForm").style.display = "block";
+          document.getElementById("modalResult").style.display = "none";
+          document.getElementById("userEmail").value = "";
+        }
+      }
+
+      // Handles user input submission and transitions to the key copy view
+      function processModalSubmission() {
+        const emailInput = document.getElementById("userEmail").value;
+        if (!emailInput) {
+          alert("Please fill out the field.");
+          return;
+        }
+
+        // Generate the requested 64-digit base32 API key
+        const generatedKey = generateBase32Key();
+
+        // Update UI components
+        document.getElementById("apiKeyDisplay").innerText = generatedKey;
+        document.getElementById("modalForm").style.display = "none";
+        document.getElementById("modalResult").style.display = "block";
+      }
+
+      // Copies the key text directly to the system clipboard
+      function copyKeyToClipboard() {
+        const keyText = document.getElementById("apiKeyDisplay").innerText;
+        navigator.clipboard.writeText(keyText).then(() => {
+          const copyBtn = document.getElementById("copyBtn");
+          copyBtn.innerText = "Copied!";
+          copyBtn.style.background = "#28a745";
+
+          // Auto close modal shortly after copying
+          setTimeout(() => {
+            toggleModal(false);
+            copyBtn.innerText = "Copy API Key";
+            copyBtn.style.background = "#0070f3";
+          }, 1200);
+        });
+      }
+    </script>
+    
+    <style>
+      /* Dark background overlay */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Show state */
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Modal Content Box */
+      .modal-box {
+        background: #ffffff;
+        padding: 24px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        font-family: sans-serif;
+      }
+
+      /* Form items inside the modal */
+      .modal-box h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .modal-box input {
+        width: 100%;
+        padding: 10px;
+        margin: 12px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .modal-box button {
+        width: 100%;
+        padding: 12px;
+        background: #0070f3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .modal-box button:hover {
+        background: #0051a2;
+      }
+
+      /* Readonly key display area */
+      .key-container {
+        display: none;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px dashed #bbb;
+        margin-top: 12px;
+      }
+
+      .key-container code {
+        word-break: break-all;
+        font-family: monospace;
+        font-size: 14px;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+    
+    <!-- Button to launch the modal -->
+    <button onclick="toggleModal(true)">Get An API Key</button>
+    
+    <!-- The Modal Markup Structure -->
+    <div id="apiKeyModal" class="modal-overlay" onclick="if(event.target === this) toggleModal(false)">
+      <div class="modal-box">
+        
+        <!-- Step 1: Ask for information -->
+        <div id="modalForm">
+          <h3>Request API Key</h3>
+          <label for="userEmail">Email Address:</label>
+          <input type="email" id="userEmail" placeholder="you@example.com" required>
+          <button onclick="processModalSubmission()">Generate Key</button>
+        </div>
+        
+        <!-- Step 2: Show key and copy option -->
+        <div id="modalResult" style="display: none;">
+          <h3>Your API Key Generated</h3>
+          <p style="font-size: 13px; color: #666;">Copy this key now. It cannot be shown again.</p>
+          <div class="key-container" style="display: block;">
+            <code id="apiKeyDisplay"></code>
+          </div>
+          <button id="copyBtn" onclick="copyKeyToClipboard()" style="margin-top: 15px;">Copy API Key</button>
+        </div>
+        
+      </div>
+    </div>
+    
+  </body>
+
+</html>
